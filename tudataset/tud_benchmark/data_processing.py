@@ -3,8 +3,10 @@ from sklearn.decomposition import KernelPCA, TruncatedSVD
 import os
 import pandas as pd
 import re
+import auxiliarymethods.auxiliary_methods as aux
+from scipy.sparse import load_npz
 
-# utility functions
+
 def load_csv(path):
     return np.loadtxt(path, delimiter=";")
 
@@ -14,7 +16,7 @@ def load_sparse(path):
 def select_from_list(l, indices):
     return [l[i] for i in indices]
 
-def load_grams(base_path):
+def load_grams(base_path, ds_name):
     '''
     Returns a dict of gram representations of MSRC_21 image set.
     '''
@@ -35,7 +37,7 @@ def load_grams(base_path):
     data["shortest_path"] = gram
     return data
 
-def load_vectors(base_path):
+def load_vectors(base_path,ds_name):
     '''
     Returns a dict of vector representations of MSRC_21 image set.
     '''
@@ -62,7 +64,7 @@ def kernel_pcas(gram_dict, kernel = "precomputed", dims = 100):
     
     return kpca_grams
 
-def trunc_svds(vector_dict,dims=100):
+def trunc_svds(vector_dict, dims=100):
     '''
     Apply Truncated SVD to a dictionary of sparse vectors.
     '''

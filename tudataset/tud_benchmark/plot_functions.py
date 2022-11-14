@@ -2,6 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 import os
+import matplotlib
+import networkx as nx
 
 
 def plot_images_by_id(id_list,file_classes):
