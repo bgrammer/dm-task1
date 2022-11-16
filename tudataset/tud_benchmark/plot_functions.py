@@ -48,6 +48,10 @@ def plot_image_by_class_label(classes, file_classes, no_images = 5):
     matplotlib.pyplot.close()
 
 def visualize(G, color=None, figsize=(7,7)):
+    if color == "degree":
+        degrees = G.degree() #Dict with Node ID, Degree
+        nodes = G.nodes()
+        color = np.asarray([degrees[n] for n in nodes])
     plt.figure(figsize=figsize)
     plt.xticks([])
     plt.yticks([])
