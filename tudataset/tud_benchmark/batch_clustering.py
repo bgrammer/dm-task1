@@ -8,10 +8,10 @@ def nrkmeans_batch(data, labels, clusters = 20):
     Get dict of arrays, return dict of nmis
     '''
     nmis = {}
-    y_pred = {}
+    y_preds = {}
     for name,gram in data.items():
         new_name = name+"_nrkmeans"
-        nrkm = NrKmeans(n_clusters=[k,1], allow_larger_noise_space=True)
+        nrkm = nrkmeans.NrKmeans(n_clusters=[clusters,1], allow_larger_noise_space=True)
         nrkm.fit(gram, best_of_n_rounds=10)
         nmis[new_name] = normalized_mutual_info_score(nrkm.labels[0],labels) 
         y_pred[new_name] = nrkm.labels[0] 
