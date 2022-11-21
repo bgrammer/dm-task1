@@ -20,14 +20,14 @@ def nrkmeans_batch(data, labels, clusters = 20):
 def agglomerative_batch(data,labels,clusters = 20,linkage="complete"):
     #‘ward’, ‘complete’, ‘average’, ‘single’
     nmis = {}
-    y_pred = {}
+    y_preds = {}
     
     for name,gram in data.items():
         new_name = name+"_aggl_"+linkage
         agglm = sklearn.cluster.AgglomerativeClustering(n_clusters=clusters, linkage=linkage)
         agglm.fit(gram)
         nmis[new_name] = normalized_mutual_info_score(agglm.labels_,labels)
-        y_pred[new_name] = agglm.labels_
+        y_preds[new_name] = agglm.labels_
     return nmis,y_preds
 
 def spectral_clustering_batch(data,labels,assign_labels = "cluster_qr", affinity = 'precomputed', clusters = 20):
