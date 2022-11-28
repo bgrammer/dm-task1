@@ -1,4 +1,4 @@
-This repository is a fork of the 
+This repository is a fork of the TUDataset repository (see below) made for an exploratory data analysis of the MSRC-21 dataset and for testing an implementation of the CLIQUE algorithm. 
 
 # TUDataset
 
